@@ -21,7 +21,7 @@ pipeline {
 
                 echo "adb kill-server"
                 echo "adb start-server"
-                aecho "db connect 192.168.1.75"
+                echo "db connect 192.168.1.75"
             }
         }
     }
