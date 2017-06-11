@@ -7,24 +7,24 @@ pipeline {
                 dir('.'){
                   deleteDir()
                 }
-                sh "wget https://dl.google.com/android/repository/sdk-tools-darwin-3859397.zip"
-                sh "unzip sdk-tools-darwin-3859397.zip"
+                sh "wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
+                sh "unzip platform-tools-latest-linux.zip"
                 sh "ls"
                 echo "Running ${env.BUILD_ID}"
             }
         }
-        stage('Test') {
+        stage('Connect to FireTV') {
             steps {
-                echo 'Testing..'
+                sh "adb kill-server"
+                sh "adb start-server"
+                sh "adb connect 192.168.1.75"
+                sh "adb devices"
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
 
-                echo "adb kill-server"
-                echo "adb start-server"
-                echo "db connect 192.168.1.75"
             }
         }
     }
