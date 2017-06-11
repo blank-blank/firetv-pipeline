@@ -19,9 +19,17 @@ pipeline {
                 sh "platform-tools/adb devices"
             }
         }
+        stage('Clone application source code'){
+          steps {
+            sh "git clone https://github.com/codepath/android-audio-video-demo.git application"
+            sh "cd application;./gradlew clean assemble"  
+          }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                def apk_file = "hello.apk"
+                sh "adb install ${apk_file}"
 
             }
         }
