@@ -9,16 +9,14 @@ pipeline {
                 }
                 sh "wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
                 sh "unzip platform-tools-latest-linux.zip"
-                sh "ls"
-                echo "Running ${env.BUILD_ID}"
             }
         }
         stage('Connect to FireTV') {
             steps {
-                sh "adb kill-server"
-                sh "adb start-server"
-                sh "adb connect 192.168.1.75"
-                sh "adb devices"
+                sh "platform-tools/adb kill-server"
+                sh "platform-tools/adb start-server"
+                sh "platform-tools/adb connect 192.168.1.75"
+                sh "platform-tools/adb devices"
             }
         }
         stage('Deploy') {
