@@ -30,9 +30,6 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh "adb install application/application.apk"
-
-"
-
             }
         }
     }
