@@ -2,10 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Prebuild Install') {
             steps {
-
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"}
+                sh "wget https://dl.google.com/android/repository/sdk-tools-darwin-3859397.zip"
+                sh "unzip sdk-tools-darwin-3859397.zip"
+                sh "ls"
+                echo "Running ${env.BUILD_ID}"
+            }
         }
         stage('Test') {
             steps {
@@ -15,6 +18,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+
+                echo "adb kill-server"
+                echo "adb start-server"
+                aecho "db connect 192.168.1.75"
             }
         }
     }
