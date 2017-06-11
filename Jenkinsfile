@@ -7,11 +7,11 @@ pipeline {
                 dir('.'){
                   deleteDir()
                 }
-                //sh "wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
+                sh "wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
                 sh "wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip"
                 sh "unzip sdk-tools-linux-3859397.zip"
                 sh './tools/bin/sdkmanager "platforms;android-25"'
-                //sh "unzip platform-tools-latest-linux.zip"
+                sh "unzip platform-tools-latest-linux.zip"
                 sh './tools/bin/sdkmanager --list'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Clone application source code'){
           steps {
             sh "git clone https://github.com/codepath/android-audio-video-demo.git application"
-            sh "cd application;./gradlew clean assemble"  
+            sh "ANDROID_HOME=$(pwd);cd application;./gradlew clean assemble"  
           }
         }
         stage('Deploy') {
