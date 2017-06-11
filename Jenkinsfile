@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Prebuild Install') {
             steps {
-                deletedir
+                deleteDir
                 sh "wget https://dl.google.com/android/repository/sdk-tools-darwin-3859397.zip"
                 sh "unzip sdk-tools-darwin-3859397.zip"
                 sh "ls"
