@@ -8,7 +8,7 @@ pipeline {
                   deleteDir()
                 }
                 //sh "wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
-                sh "wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip?hl=sk"
+                sh "wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip"
                 sh "unzip sdk-tools-linux-3859397.zip"
                 //sh "unzip platform-tools-latest-linux.zip"
             }
