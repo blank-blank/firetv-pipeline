@@ -26,9 +26,11 @@ pipeline {
           }
         }
         stage('Deploy') {
+
+            def apk_file = "application/application.apk"
+
             steps {
                 echo 'Deploying....'
-                def apk_file = "hello.apk"
                 sh "adb install ${apk_file}"
 
             }
