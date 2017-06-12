@@ -21,6 +21,7 @@ pipeline {
                 //sh "platform-tools/adb start-server"
                 //sh "platform-tools/adb connect 192.168.1.75"
                 //sh "platform-tools/adb devices"
+                echo "placeholder for connection step"
             }
         }
         stage('Clone application source code'){
