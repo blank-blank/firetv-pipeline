@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Clone application source code'){
           steps {
-            sh '/projects/android/sdk/bin/sdkmanager "platforms;android-22"'
+            sh '/opt/android/sdk/bin/sdkmanager "platforms;android-22"'
             sh "git clone https://github.com/codepath/android-audio-video-demo.git application"
             sh "cp /opt/android/local.properties application/local.properties"
             sh "cd application; ./gradlew assemble" 
