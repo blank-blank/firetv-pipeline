@@ -27,7 +27,8 @@ pipeline {
         stage('Clone application source code'){
           steps {
             sh "git clone https://github.com/codepath/android-audio-video-demo.git application"
-            sh "ANDROID_HOME=/opt/android/sdk; cd application; ./gradlew assemble" 
+            sh "cp /opt/android/local.properties application/local.properties"
+            sh "cd application; ./gradlew assemble" 
           }
         }
     }
